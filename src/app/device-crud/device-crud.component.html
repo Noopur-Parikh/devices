@@ -19,7 +19,7 @@
               <div class="col form-group">
                 <label>IP</label>
                 <input type="text" class="form-control" formControlName="ip">
-                <div class="alert alert-danger" *ngIf="!form.controls['ip'].valid && form.controls['ip'].touched">Enter valid ip</div>
+                <div class="alert alert-danger" *ngIf="form.controls['ip'].errors && form.controls['ip'].touched">Enter valid ip</div>
               </div>
             </div>
             <table class="table table-hover">

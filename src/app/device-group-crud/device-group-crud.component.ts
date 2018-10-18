@@ -35,8 +35,8 @@ export class DeviceGroupCrudComponent implements OnInit {
     () => {
       this.form = this._formBuilder.group({
         name: [this.group.name, Validators.required],
-        ip: [null],
-        hostname: [null]
+        ip: [null, [Validators.required, Validators.pattern('^(?=.*[^\.]$)((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.?){4}$')]],
+        hostname: [null, Validators.required]
       });
       this.devices = this.group.devices;
     });
@@ -95,7 +95,8 @@ export class DeviceGroupCrudComponent implements OnInit {
     };
     console.log(item);
     this.devices.push(item);
-    this.form.controls['hostname'].setValue('');
-    this.form.controls['ip'].setValue('');
+    this.form.reset();
+    // this.form.controls['hostname'].setValue('');
+    // this.form.controls['ip'].setValue('');
   }
 }

@@ -12,6 +12,7 @@ export class DeviceComponent implements OnInit {
 
   devices: any;
   form: FormGroup;
+
   constructor(private deviceService: DeviceService, private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -23,9 +24,9 @@ export class DeviceComponent implements OnInit {
     err => console.log(err),
     () => {
       this.form = this._formBuilder.group({
-        ip: [null],
-        hostname: [null],
-        group: [null]
+        ip: [null, [Validators.required, Validators.pattern('^(?=.*[^\.]$)((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.?){4}$')]],
+        hostname: [null, Validators.required],
+        group: [null, Validators.required]
       });
     });
   }

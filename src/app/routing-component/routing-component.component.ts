@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-routing-component',
@@ -9,7 +10,7 @@ export class RoutingComponentComponent implements OnInit {
   collapseFlag: boolean = false;
   companyID: string;
   selectedSectionID: string;
-  constructor() { }
+  constructor(protected userService: UserService) { }
 
   ngOnInit() {
   }

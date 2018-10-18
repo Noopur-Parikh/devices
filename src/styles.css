@@ -4,3 +4,13 @@
     font-size: 15px;
     cursor: pointer;
 }
+
+.btn-primary {
+    background-color:#261570;
+    border-color: #261570;
+}
+
+.btn-primary:hover {
+    background-color: green;
+    border-color: green;
+}

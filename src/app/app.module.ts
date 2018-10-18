@@ -10,12 +10,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeviceCrudComponent } from './device-crud/device-crud.component';
 import { DeviceGroupCrudComponent } from './device-group-crud/device-group-crud.component';
+import { LoginComponent } from './login/login.component';
+
+import { RouterGuardService as AuthGuard } from './services/router-guard.service';
+import { HomeComponent } from './home/home.component'
 
 const routes: Routes = [
-  {path: 'device', component: DeviceComponent},
-  {path: 'device/:id', component: DeviceCrudComponent},
-  {path: 'device_group', component: DeviceGroupComponent},
-  {path: 'device_group/:id', component: DeviceGroupCrudComponent}
+  {path: 'device', component: DeviceComponent, canActivate: [AuthGuard]},
+  {path: 'device/:id', component: DeviceCrudComponent, canActivate: [AuthGuard]},
+  {path: 'device_group', component: DeviceGroupComponent, canActivate: [AuthGuard]},
+  {path: 'device_group/:id', component: DeviceGroupCrudComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'login/:parent', component: LoginComponent},
+  {path: '', component: HomeComponent}
 ]
 @NgModule({
   declarations: [
@@ -24,7 +31,9 @@ const routes: Routes = [
     RoutingComponentComponent,
     DeviceGroupComponent,
     DeviceCrudComponent,
-    DeviceGroupCrudComponent
+    DeviceGroupCrudComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

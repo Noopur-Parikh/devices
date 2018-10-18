@@ -36,7 +36,7 @@ export class DeviceCrudComponent implements OnInit {
       err => console.log(err),
       () => {
         this.form = this._formBuilder.group({
-          ip: [this.device.ip, Validators.required],
+          ip: [this.device.ip, [Validators.required, Validators.pattern('^(?=.*[^\.]$)((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.?){4}$')]],
           hostname: [this.device.hostname, Validators.required],
           group: [null]
         });
